@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 19:32:16 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/18 19:42:14 by dcirlig          ###   ########.fr       */
+/*   Created: 2017/11/16 10:09:21 by dcirlig           #+#    #+#             */
+/*   Updated: 2017/12/04 09:06:12 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
+#include <stdio.h>
 
-int	ft_valid_map(char *s)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	int	i;
-	int p;
-	int	d;
-	int nl;
+	unsigned char	*s1;
+	unsigned char	*s2;
+	size_t			i;
 
 	i = 0;
-	p = 0;
-	d = 0;
-	nl = 0;
-	while (s[i] != '\0')
+	s1 = (unsigned char*)dest;
+	s2 = (unsigned char*)src;
+	while (i < n)
 	{
-		if (s[i] == '.')
-			p++;
-		else if (s[i] == '#')
-			d++;
-		else if (s[i] == '\n')
-			nl++;
+		s1[i] = s2[i];
+		if (s2[i] == (unsigned char)c)
+			return (s1 + i + 1);
 		i++;
 	}
-	if (p % 12 == 0 && d % 4 == 0 && (nl + 1) % 5 == 0)
-		return (1);
-	return (0);
+	return (NULL);
 }

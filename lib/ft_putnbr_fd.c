@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 19:32:16 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/18 19:42:14 by dcirlig          ###   ########.fr       */
+/*   Created: 2017/11/07 09:30:37 by dcirlig           #+#    #+#             */
+/*   Updated: 2017/12/02 12:41:06 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int	ft_valid_map(char *s)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	int	i;
-	int p;
-	int	d;
-	int nl;
+	unsigned int n;
 
-	i = 0;
-	p = 0;
-	d = 0;
-	nl = 0;
-	while (s[i] != '\0')
+	n = nb;
+	if (nb < 0)
 	{
-		if (s[i] == '.')
-			p++;
-		else if (s[i] == '#')
-			d++;
-		else if (s[i] == '\n')
-			nl++;
-		i++;
+		ft_putchar_fd('-', fd);
+		n = -nb;
 	}
-	if (p % 12 == 0 && d % 4 == 0 && (nl + 1) % 5 == 0)
-		return (1);
-	return (0);
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		ft_putchar_fd(n + '0', fd);
 }

@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 19:32:16 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/18 19:42:14 by dcirlig          ###   ########.fr       */
+/*   Created: 2017/11/13 13:00:05 by dcirlig           #+#    #+#             */
+/*   Updated: 2017/12/04 09:17:31 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int	ft_valid_map(char *s)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	int	i;
-	int p;
-	int	d;
-	int nl;
+	int i;
 
 	i = 0;
-	p = 0;
-	d = 0;
-	nl = 0;
-	while (s[i] != '\0')
+	while (src[i])
 	{
-		if (s[i] == '.')
-			p++;
-		else if (s[i] == '#')
-			d++;
-		else if (s[i] == '\n')
-			nl++;
+		dest[i] = src[i];
 		i++;
 	}
-	if (p % 12 == 0 && d % 4 == 0 && (nl + 1) % 5 == 0)
-		return (1);
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }

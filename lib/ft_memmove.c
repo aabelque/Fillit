@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 19:32:16 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/18 19:42:14 by dcirlig          ###   ########.fr       */
+/*   Created: 2017/11/20 14:36:28 by dcirlig           #+#    #+#             */
+/*   Updated: 2017/12/04 09:10:20 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int	ft_valid_map(char *s)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	i;
-	int p;
-	int	d;
-	int nl;
+	char			*src1;
+	char			*dest1;
 
-	i = 0;
-	p = 0;
-	d = 0;
-	nl = 0;
-	while (s[i] != '\0')
+	dest1 = (char*)dest;
+	src1 = (char*)src;
+	if (src1 == dest1)
+		return (dest);
+	if (src1 < dest1)
 	{
-		if (s[i] == '.')
-			p++;
-		else if (s[i] == '#')
-			d++;
-		else if (s[i] == '\n')
-			nl++;
-		i++;
+		src1 = &src1[n - 1];
+		dest1 = &dest1[n - 1];
+		while (n--)
+			*dest1-- = *src1--;
 	}
-	if (p % 12 == 0 && d % 4 == 0 && (nl + 1) % 5 == 0)
-		return (1);
-	return (0);
+	else
+	{
+		while (n--)
+			*dest1++ = *src1++;
+	}
+	return (dest);
 }

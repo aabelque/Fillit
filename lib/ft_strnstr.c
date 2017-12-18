@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 19:32:16 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/18 19:42:14 by dcirlig          ###   ########.fr       */
+/*   Created: 2017/11/15 14:58:08 by dcirlig           #+#    #+#             */
+/*   Updated: 2017/12/04 09:38:26 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int	ft_valid_map(char *s)
+char	*ft_strnstr(const char *str1, const char *str2, size_t n)
 {
-	int	i;
-	int p;
-	int	d;
-	int nl;
+	size_t	i;
+	size_t	size;
+	size_t	j;
 
 	i = 0;
-	p = 0;
-	d = 0;
-	nl = 0;
-	while (s[i] != '\0')
+	j = 0;
+	size = ft_strlen(str2);
+	if (size == 0)
+		return ((char*)str1);
+	while (str1[i])
 	{
-		if (s[i] == '.')
-			p++;
-		else if (s[i] == '#')
-			d++;
-		else if (s[i] == '\n')
-			nl++;
+		while (str1[i + j] == str2[j] && n > i + j)
+		{
+			if (j == size - 1)
+				return ((char*)str1 + i);
+			j++;
+		}
+		j = 0;
 		i++;
 	}
-	if (p % 12 == 0 && d % 4 == 0 && (nl + 1) % 5 == 0)
-		return (1);
 	return (0);
 }

@@ -6,11 +6,12 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 12:42:42 by aabelque          #+#    #+#             */
-/*   Updated: 2017/12/16 13:06:05 by aabelque         ###   ########.fr       */
+/*   Updated: 2017/12/18 19:37:19 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "lib/libft.h"
 
 char	**ft_split_tetr(char *s)
 {
@@ -27,11 +28,11 @@ char	**ft_split_tetr(char *s)
 	while (s[i] != '\0')
 	{
 		j = 0;
-		new[k] = (char *)malloc(sizeof(char) * 22);
-		while (j < 21 && s[i] != '\0')
+		new[k] = (char *)malloc(sizeof(char) * 21);
+		while (j < 20 && s[i] != '\0')
 			new[k][j++] = s[i++];
-		new[k][j] = '\0';
-		k++;
+		new[k++][j] = '\0';
+		i++;
 	}
 	if (k > 26)
 		return (0);

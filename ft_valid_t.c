@@ -3,49 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   ft_valid_t.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/17 19:00:34 by aabelque          #+#    #+#             */
-/*   Updated: 2017/12/18 12:07:44 by aabelque         ###   ########.fr       */
+/*   Created: 2017/12/18 19:35:51 by dcirlig           #+#    #+#             */
+/*   Updated: 2017/12/18 19:40:55 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_valid_t(char **s)
+int	ft_map_v(char *s, int n, int d, int p)
 {
-	int	i;
+	int i;
 
-	i = -1;
-	while (s[++i] != '\0')
+	i = 0;
+	while (s[i] != '\0')
 	{
-		if ((ft_tetr_v(s[i])) == 0)
-			return (0);
+		if (s[i] == '\n')
+			n++;
+		if (s[i] == '#')
+			d++;
+		if (s[i] == '.')
+			p++;
+		i++;
 	}
-	return (1);
+	if (d == 4 && p == 12 && n == 4)
+		return (1);
+	return (0);
 }
 
-int		ft_tetr_v(char *s)
+int	ft_tetr_v(char *s)
 {
 	int	u;
 	int	i;
 
 	u = 0;
 	i = 0;
-	while (i < 20)
+	if (ft_map_v(s, 0, 0, 0))
 	{
-		if (s[i] == '#')
+		while (s[i] != '\0')
 		{
-			if ((i + 1) < 20 && s[i + 1] == '#')
-				u++;
-			if ((i - 1) >= 0 && s[i - 1] == '#')
-				u++;
-			if ((i + 5) < 20 && s[i + 5] == '#')
-				u++;
-			if ((i - 5) >= 0 && s[i + 5] == '#')
-				u++;
+			if (s[i] == '#')
+			{
+				if ((i + 1) < 20 && s[i + 1] == '#')
+					u++;
+				if ((i - 1) >= 0 && s[i - 1] == '#')
+					u++;
+				if ((i + 5) < 20 && s[i + 5] == '#')
+					u++;
+				if ((i - 5) >= 0 && s[i - 5] == '#')
+					u++;
+			}
+			i++;
 		}
-		i++;
 	}
 	return (u == 6 || u == 8);
+}
+
+int	ft_valid_t(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (!ft_tetr_v(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

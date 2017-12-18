@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_map.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 19:32:16 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/18 19:42:14 by dcirlig          ###   ########.fr       */
+/*   Created: 2017/11/09 14:22:40 by dcirlig           #+#    #+#             */
+/*   Updated: 2017/12/04 09:51:47 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int	ft_valid_map(char *s)
+char	*ft_strdup(const char *s)
 {
-	int	i;
-	int p;
-	int	d;
-	int nl;
+	char	*str;
+	int		len_s;
+	int		i;
 
+	len_s = 0;
 	i = 0;
-	p = 0;
-	d = 0;
-	nl = 0;
-	while (s[i] != '\0')
+	while (s[len_s] != '\0')
+		len_s++;
+	str = (char*)malloc(sizeof(const char) * (len_s + 1));
+	if (str == NULL)
+		return (NULL);
+	while (i <= len_s)
 	{
-		if (s[i] == '.')
-			p++;
-		else if (s[i] == '#')
-			d++;
-		else if (s[i] == '\n')
-			nl++;
+		str[i] = s[i];
 		i++;
 	}
-	if (p % 12 == 0 && d % 4 == 0 && (nl + 1) % 5 == 0)
-		return (1);
-	return (0);
+	str[i] = '\0';
+	return (str);
 }
