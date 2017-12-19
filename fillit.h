@@ -6,7 +6,7 @@
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:06:00 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/18 19:34:27 by dcirlig          ###   ########.fr       */
+/*   Updated: 2017/12/19 08:16:50 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <fcntl.h>
 
 int		g_size;
-
 int		ft_tetr_v(char *s);
 int		ft_valid_t(char **s);
 int		ft_valid_map(char *s);
