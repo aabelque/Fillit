@@ -6,13 +6,13 @@
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 19:35:51 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/18 19:40:55 by dcirlig          ###   ########.fr       */
+/*   Updated: 2017/12/19 08:50:46 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_map_v(char *s, int n, int d, int p)
+int	ft_char_v(char *s, int n, int d, int p)
 {
 	int i;
 
@@ -39,7 +39,7 @@ int	ft_tetr_v(char *s)
 
 	u = 0;
 	i = 0;
-	if (ft_map_v(s, 0, 0, 0))
+	if (ft_char_v(s, 0, 0, 0))
 	{
 		while (s[i] != '\0')
 		{

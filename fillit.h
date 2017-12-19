@@ -6,7 +6,7 @@
 /*   By: dcirlig <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 13:06:00 by dcirlig           #+#    #+#             */
-/*   Updated: 2017/12/19 08:16:50 by dcirlig          ###   ########.fr       */
+/*   Updated: 2017/12/19 08:52:13 by dcirlig          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		g_size;
 int		ft_tetr_v(char *s);
 int		ft_valid_t(char **s);
 int		ft_valid_map(char *s);
-int		ft_map_v(char *s, int n, int d, int p);
 int		ft_check(int dest[4][4], char **sq);
 char	**ft_create_m(int size);
 char	*ft_read(char *s);
